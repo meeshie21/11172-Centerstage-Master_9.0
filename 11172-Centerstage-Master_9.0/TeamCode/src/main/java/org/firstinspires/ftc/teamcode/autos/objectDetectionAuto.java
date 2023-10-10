@@ -48,7 +48,7 @@ import java.util.List;
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list.
  */
-@TeleOp(name = "objectDetectionv1", group = "Concept")
+@TeleOp(name = "objectDetectionAuto", group = "Concept")
 public class objectDetectionAuto extends LinearOpMode {
 
     private static final boolean USE_WEBCAM = true;  // true for webcam, false for phone camera
@@ -84,6 +84,7 @@ public class objectDetectionAuto extends LinearOpMode {
 
             while (opModeIsActive()) {
                 telemetryTfod();
+                int side = getSide();
 
                 // Push telemetry to the Driver Station.
                 telemetry.update();
@@ -188,6 +189,12 @@ public class objectDetectionAuto extends LinearOpMode {
     /**
      * Add telemetry about TensorFlow Object Detection (TFOD) recognitions.
      */
+    private int getSide() {
+        Recognition recognition = tfod.getRecognitions().get(0);
+        if (recognition.getLeft()>200) return 1;
+        if (recognition.getLeft()<=200) return 0;
+        return 2;
+    }
     private void telemetryTfod() {
 
         List<Recognition> currentRecognitions = tfod.getRecognitions();
