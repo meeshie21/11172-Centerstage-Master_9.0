@@ -186,15 +186,6 @@ public class objectDetectionAuto extends LinearOpMode {
 
     }   // end method initTfod()
 
-    /**
-     * Add telemetry about TensorFlow Object Detection (TFOD) recognitions.
-     */
-    private int getSide() {
-        Recognition recognition = tfod.getRecognitions().get(0);
-        if (recognition.getLeft()>200) return 1;
-        if (recognition.getLeft()<=200) return 0;
-        return 2;
-    }
     private void telemetryTfod() {
 
         List<Recognition> currentRecognitions = tfod.getRecognitions();
@@ -213,4 +204,13 @@ public class objectDetectionAuto extends LinearOpMode {
 
     }   // end method telemetryTfod()
 
+    /**
+     * Add telemetry about TensorFlow Object Detection (TFOD) recognitions.
+     */
+    private int getSide() {
+        Recognition recognition = tfod.getRecognitions().get(0);
+        if (recognition.getLeft()>200) return 1;
+        if (recognition.getLeft()<=200) return 0;
+        return 2;
+    }
 }   // end class
