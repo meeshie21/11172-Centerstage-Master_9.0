@@ -12,6 +12,7 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 @Autonomous
 public class Practice_Auto extends LinearOpMode
 {
+    //penis
 
     @Override
     public void runOpMode() throws InterruptedException
